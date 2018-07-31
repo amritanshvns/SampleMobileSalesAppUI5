@@ -1,0 +1,168 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "technophilia.MobileSalesApp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"ach": "ach",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/destinations/northwind/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_belize"]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"id": "AdminHome",
+			"viewName": "technophilia.MobileSalesApp.view.AdminHome",
+			"type": "XML",
+			"async": true
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "technophilia.MobileSalesApp.i18n.i18n"
+				}
+			},
+			"side": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/sideContent.json"
+			},
+			"alerts": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/alerts.json"
+			},
+			"customer": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/customers.json"
+			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					}
+				}
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"controlId": "mainContents",
+				"viewType": "XML",
+				"viewPath": "technophilia.MobileSalesApp.view",
+				"controlAggregation": "pages",
+				"async": true,
+				"bypassed": {
+					"target": ["Error"]
+				}
+			},
+			"routes": [{
+				"name": "App",
+				"pattern": "login",
+				"target": ["App"]
+			}, {
+				"name": "home",
+				"pattern": "",
+				"target": "HOME"
+			}, {
+				"name": "ADMIN",
+				"pattern": "login/admin",
+				"greedy": false,
+				"target": "ADMIN"
+			}, {
+				"name": "statistics",
+				"pattern": "statistics",
+				"target": "STATISTICS"
+			},
+			{
+				"name": "worklist",
+				"pattern": "worklist",
+				"target": "WORKLIST"
+			}],
+			"targets": {
+				"HOME": {
+					"viewId": "home",
+					"viewName": "AdminContent",
+					"viewType": "XML",
+					"clearAggregation": true
+				},
+				"ADMIN": {
+					"viewName": "AdminHome",
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true
+				},
+				"Error": {
+					"viewName": "Error",
+					"viewType": "XML",
+					"clearAggregation": true
+				},
+				"App": {
+					"viewName": "App",
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true
+				},
+				"STATISTICS": {
+					"viewId": "statistics",
+					"viewName": "Statistics"
+				},
+				"WORKLIST": {
+					"viewId": "worklist",
+					"viewName": "Worklist"
+				}
+			}
+		}
+	}
+}

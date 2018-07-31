@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m">
+    <Dialog id="createPromotionDialog" title="Create New Promotion" contentWidth="1000px" contentHeight="604px">
+        <VBox>
+            <Label text="Promotion Title " class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            <Input post="onPost" showIcon="false" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom" />
+            <Label text="Description " class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            <Input post="onPost" showIcon="false" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            <Label text="Start Date and End Date" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            <DateRangeSelection id="DRS2" dateValue="{path:'/dateValueDRS2'}" secondDateValue="{path:'/secondDateValueDRS2'}" minDate="{path:'/dateMinDRS2'}" maxDate="{path:'/dateMaxDRS2'}" change="handleChange" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            <Label text="Timing" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            <HBox>
+                <TimePicker id="TP1" valueFormat="HH:mm:ss" displayFormat="HH:mm" change="handleChange" placeholder="Enter start time" class="sapUiTinyMarginBeginEnd"/>
+                <TimePicker id="TP2" valueFormat="HH:mm:ss" displayFormat="HH:mm:ss" change="handleChange" placeholder="Enter end time"/>
+            </HBox>
+            <VBox>
+                <Label text="Device" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+                 <Input post="onPost" showIcon="false" class="sapUiTinyMarginBeginEnd sapUiTinyMarginTopBottom"/>
+            </VBox>
+        </VBox>
+        <beginButton>
+			<Button id = "createPromotionSubmit" text="Create" press="onCreatePromotion"
+				type="Emphasized" />
+		</beginButton>
+		<endButton>
+			<Button text="Discard" press="onCancelCreatePromotion" />
+		</endButton>
+    </Dialog>
+</core:FragmentDefinition>

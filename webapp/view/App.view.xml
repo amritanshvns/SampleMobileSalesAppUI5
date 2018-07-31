@@ -1,0 +1,21 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="technophilia.MobileSalesApp.controller.App" 
+    xmlns="sap.m">
+    <Page id="loginPage" showHeader="true" title="Responsive Page Title" showFooter="true" showNavButton="false">
+        <content>
+        <VBox>
+        <HBox>
+            <Label text="User" design="Standard" width="auto" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+            <Input placeholder="Enter Username" width="50%" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+            </HBox>
+            <HBox>
+            <Label text="Password" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+            <Input text="" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true" type="Password" placeholder="Enter Password"/>
+            </HBox>
+            <Button text="Login" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onButtonPress"/>
+            </VBox>
+        </content>
+        <headerContent/>
+        <subHeader/>
+        <customHeader/>
+    </Page>
+</mvc:View>
